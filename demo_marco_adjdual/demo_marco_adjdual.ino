@@ -1,3 +1,4 @@
+////doble eje //
 #include "libb.h"
 TaskHandle_t Task1;
 int retardo = 3;        // Tiempo de retardo en milisegundos (Velocidad del Motor)
