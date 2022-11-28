@@ -94,19 +94,22 @@ void loop() {
 void adj(){
   if(enc==400){
     numero_pasos=5119;
+     p_inicial = 0;
   }
-  if(enc==198){
+  if(enc==200){
     numero_pasos=2559;
   }
-  if(enc==601){
+  if(enc==600){
     numero_pasos=7679;
   }
 }
+
 void calculo() {
   if(az<90&&old_az>270){
     z=az;
   }
-  else if ((az - x) > 270) {
+  
+  else if ((az - x) > 181) {
     g = 360 - az;
     if (abs(g) >= 2) {
 

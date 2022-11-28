@@ -9,6 +9,7 @@ void motor_1() {
       az = 90;
       liim = -1;
     }
+    
     p_inicial = 0;
     if (old_az != az ) {
       calculo();
@@ -55,7 +56,6 @@ void motor_2() {
     while (dato_rx_ > numero_pasos_ && !digitalRead(ldr_) == HIGH) { // Girohacia la izquierda en grados
       paso_izq_();
       numero_pasos_ = numero_pasos_ + 1;
-
     }
     while (dato_rx_ < numero_pasos_ && !digitalRead(ldr_) == HIGH) { // Giro hacia la derecha en grados
       while (dato_rx_ == 127 && !digitalRead(FC_) == LOW) {

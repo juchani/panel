@@ -16,7 +16,6 @@
 int enc;
 int ang;
 
-
 //Modbus Registers Offsets
 const int X_HREG = 100;
 const int AZ_HREG = 101;
@@ -36,10 +35,8 @@ int POT1=0;
 int cc=0;
 int p_inicial;
 int x = 10, az = 360, z, g, h, old_az;
-
 //ModbusIP object
 ModbusIP mb;
-
 
 long ts;
 const char* ssid = "Osmanzonil";

@@ -9,6 +9,7 @@ void motor_1() {
       az = 90;
       liim = -1;
     }
+    
     p_inicial = 0;
     if (old_az != az ) {
       calculo();
@@ -39,7 +40,7 @@ void motor_1() {
       rotary_loop();
       numero_pasos = numero_pasos + 1;
     }
-    while (dato_rx < numero_pasos && ang > -86) { // Giro hacia la derecha en grados
+    while (dato_rx < numero_pasos && ang > -88) { // Giro hacia la derecha en grados
       paso_der();
       rotary_loop();
       numero_pasos = numero_pasos - 1;

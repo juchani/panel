@@ -5,6 +5,9 @@ void Task1code( void * pvParameters ) {
     az = mb.Hreg(AZ_HREG);
     x = mb.Hreg(X_HREG);
     p_inicial=mb.Hreg(PINI_HREG);
+    if(p_inicial>50){
+      az=90;
+    }
     //Read each two seconds
     if (millis() > ts + 2000) {
       ts = millis();
@@ -33,7 +36,6 @@ void Task1code( void * pvParameters ) {
         Serial.println(POT1);
         mb.Hreg(C_HREG, cc);
         mb.Hreg(V_HREG, vv);
-        
       }
       mb.Hreg(C_CONS_HREG,AC);
       mb.Hreg(V_CONS_HREG,  VC);
