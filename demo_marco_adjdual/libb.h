@@ -33,7 +33,7 @@ const int C_HREG = 109;       //corriente generado
 const int V_HREG = 110;       //voltaje generado
 const int C_CONS_HREG = 111;  //corriente de consumo
 const int V_CONS_HREG = 112;  //voltaje consumo
-const int PINI_HREG = 113;  //reg de posicion inicial
+const int PINI_HREG = 113;    //reg de posicion inicial
 
 int POT1 = 0;
 int cc = 0;
@@ -44,26 +44,29 @@ int x = 10, y = 0, az = 360, z, g, h, old_az;
 ModbusIP mb;
 
 
-long ts;
-const char* ssid = "Osmanzonil";
-const char* password = "Louie1234";
+long ts;                             // variable para ts (tiempo)
+const char* ssid = "Osmanzonil";     // nombre de la red a conectar
+const char* password = "Louie1234";  // contraseña de la red
 
 //Encoder
-#define ROTARY_ENCODER_A_PIN 23
-#define ROTARY_ENCODER_B_PIN 22
-#define ROTARY_ENCODER_BUTTON_PIN 13
+#define ROTARY_ENCODER_A_PIN 23       //dt
+#define ROTARY_ENCODER_B_PIN 22       //cl
+#define ROTARY_ENCODER_BUTTON_PIN 13  //este pin es para el boton (no se debe usar otro pin, puede afectar el funcionamiento)
 #define ROTARY_ENCODER_VCC_PIN -1
 #define ROTARY_ENCODER_STEPS 1
 
+// configuracion del encoder
 AiEsp32RotaryEncoder rotaryEncoder = AiEsp32RotaryEncoder(ROTARY_ENCODER_A_PIN, ROTARY_ENCODER_B_PIN, ROTARY_ENCODER_BUTTON_PIN, ROTARY_ENCODER_VCC_PIN, ROTARY_ENCODER_STEPS);
 
+//funcion para actualizar las variables enc-angulo
 void rotary_loop() {
-  if (rotaryEncoder.encoderChanged()) {
-    Serial.print("Value: ");
-    Serial.println(rotaryEncoder.readEncoder());
-    enc = rotaryEncoder.readEncoder();
 
-    ang = map(rotaryEncoder.readEncoder(), 0, 1606, 1, 360);
+  if (rotaryEncoder.encoderChanged()) {  // si ocurre un cambio de estado:
+    Serial.print("Value: ");
+    Serial.println(rotaryEncoder.readEncoder());  //obtiene los pulsos del encoder
+    enc = rotaryEncoder.readEncoder();            //obtiene los pulsos del encoder
+
+    ang = map(rotaryEncoder.readEncoder(), 0, 1606, 1, 360);//obtiene los pulsos del encoder y los convierte a angulos 
     // if(){
 
     // }
@@ -73,6 +76,7 @@ void rotary_loop() {
   }
 }
 
-void IRAM_ATTR readEncoderISR() {
+
+void IRAM_ATTR readEncoderISR() { //funcion isr (cuando el encoder detecta un cambio de  estado)
   rotaryEncoder.readEncoder_ISR();
 }
