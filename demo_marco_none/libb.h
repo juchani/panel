@@ -23,5 +23,7 @@ ModbusIP mb;
 
 
 long ts;
-const char* ssid = "Osmanzonil";
-const char* password = "Louie1234";
+//const char* ssid = "Osmanzonil";
+//const char* password = "Louie1234";
+const char* ssid = "Esp32";
+const char* password = "12345678";
